@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: 12vh 88vh;
+  grid-template-rows: 12vh 88vh;
+      grid-template-areas: "main__header" "main__content";
+  background: #f0eff4;
+}
+
+.main__header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: main__header;
+  background: #041e42;
+  color: white;
+  font-size: 8vh;
+  font-weight: 900;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.main__header img {
+  height: 70%;
+}
+
+.main__content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main__content;
+  overflow: hidden;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.main__card-cont {
+  position: relative;
+  width: 35%;
+  height: 80%;
+  margin: auto;
+}
+
+.main__card-cont .main__card {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.main__card-cont .main__card.reset {
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+
+.main__card-cont .main__card.reset .main__card__choice {
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0 !important;
+}
+
+.main__card-cont .main__card.inactive {
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.main__card-cont .main__card.to-left {
+  -webkit-transform: translateX(-30rem) rotate(-30deg) !important;
+  transform: translateX(-30rem) rotate(-30deg) !important;
+}
+
+.main__card-cont .main__card.to-right {
+  -webkit-transform: translate(30rem) rotate(30deg) !important;
+  transform: translate(30rem) rotate(30deg) !important;
+}
+
+.main__card-cont .main__card.below {
+  z-index: 1;
+  display: none;
+}
+
+.main__card-cont .main__card__top {
+  height: 80%;
+  overflow: hidden;
+  background-position-x: center;
+  background-position-y: 0px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.main__card-cont .main__card__btm {
+  height: 20%;
+  background: #333333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.main__card-cont .main__card__we {
+  font-size: 8vh;
+  font-weight: 600;
+  color: white;
+}
+
+.main__card-cont .main__card__choice {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.main__card-cont .main__card__choice:before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-left: -1rem;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.main__card-cont .main__card__choice:after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 1.5rem;
+  margin-left: -2rem;
+  border: 0.6rem solid #fff;
+  border-bottom: none;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.main__card-cont .main__card__choice.m--reject {
+  color: white;
+  background: #ff3f34;
+}
+
+.main__card-cont .main__card__choice.m--reject img {
+  width: 50%;
+  height: 50%;
+}
+
+.main__card-cont .main__card__choice.m--like {
+  color: white;
+  background: #0be881;
+}
+
+.main__card-cont .main__card__choice.m--like img {
+  width: 50%;
+  height: 50%;
+}
+
+.main__card-cont .main__card__drag {
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.main__tip {
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.main__recap {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  grid-gap: 2vh;
+  padding: 2vh;
+}
+
+.main__recap .main__card {
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.main__recap .main__card__top {
+  height: 80%;
+  overflow: hidden;
+  background-position-x: center;
+  background-position-y: -40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.main__recap .main__card__btm {
+  height: 20%;
+  background: #ff3f34;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.main__recap .main__card__we {
+  font-size: 6vh;
+  font-weight: 600;
+  color: white;
+}
+
+.main__recap.hide {
+  opacity: 0;
+}
+/*# sourceMappingURL=styles.css.map */
