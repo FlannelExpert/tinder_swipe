@@ -9,15 +9,23 @@ $(document).ready(function () {
   var options = [
     {
       name: "Option 1 Name",
-      image: "../assets/images/kris_bryant.jpg"
+      image: "../assets/images/kris_bryant.png"
     },
     {
       name: "Option 2 Name",
-      image: "../assets/images/kris_bryant.jpg"
+      image: "../assets/images/kris_bryant.png"
     },
     {
       name: "Option 3 Name",
-      image: "../assets/images/kris_bryant.jpg"
+      image: "../assets/images/kris_bryant.png"
+    },
+    {
+      name: "Option 4 Name",
+      image: "../assets/images/kris_bryant_2.jpg"
+    },
+    {
+      name: "Option 4 Name",
+      image: "../assets/images/kris_bryant_2.jpg"
     },
     {
       name: "Option 4 Name",
@@ -28,16 +36,16 @@ $(document).ready(function () {
   for (let i = options.length - 1; i >= 0; i--) {
     var html = '';
     html += `
-      <div class="main__card">
-          <div class="main__card__top option_${i}" style="background-image: url('${options[i].image}')"></div>
-          <div class="main__card__btm">
-              <p class="main__card__we">${options[i].name}</p>
+      <div class="card">
+          <div class="card--top option_${i}"><img src="${options[i].image}"></div>
+          <div class="card--btm">
+              <p class="card--btm--label">${options[i].name}</p>
           </div>
-          <div class="main__card__choice m--reject"><i class="fa-solid fa-thumbs-down fa-10x"></i></div>
-          <div class="main__card__choice m--like"><i class="fa-solid fa-thumbs-up fa-10x"></i></div>
-          <div class="main__card__drag"></div>
+          <div class="card--choice m--reject"><i class="fa-solid fa-thumbs-down fa-10x"></i></div>
+          <div class="card--choice m--like"><i class="fa-solid fa-thumbs-up fa-10x"></i></div>
+          <div class="card--drag"></div>
       </div>`
-    $('.main__card-cont').append(html);
+    $('.container').append(html);
   }
 
   function pullChange() {
@@ -66,17 +74,17 @@ $(document).ready(function () {
       $card.addClass("inactive");
 
       setTimeout(function () {
-        $card.appendTo(".main__recap");
+        $card.appendTo(".recap");
         if ($card.hasClass("to-right")) {
-          $card.find(".main__card__btm").css("background", "#0be881");
+          $card.find(".card--btm").css("background", "#0be881");
         } else {
-          $card.find(".main__card__btm").css("background", "#ff3f34");
+          $card.find(".card--btm").css("background", "#ff3f34");
         }
 
         cardsCounter++;
         if (cardsCounter === numOfCards) {
           cardsCounter = 0;
-          $(".main__recap").toggleClass("hide", 400);
+          $(".recap").toggleClass("hide", 400);
         }
       }, 300);
     }
@@ -89,7 +97,7 @@ $(document).ready(function () {
       $card
         .attr("style", "")
         .removeClass("reset")
-        .find(".main__card__choice")
+        .find(".card--choice")
         .attr("style", "");
 
       pullDeltaX = 0;
@@ -99,13 +107,13 @@ $(document).ready(function () {
 
   $(document).on(
     "mousedown touchstart",
-    ".main__card:not(.inactive)",
+    ".card:not(.inactive)",
     function (e) {
       if (animating) return;
 
       $card = $(this);
-      $cardReject = $(".main__card__choice.m--reject", $card);
-      $cardLike = $(".main__card__choice.m--like", $card);
+      $cardReject = $(".card--choice.m--reject", $card);
+      $cardLike = $(".card--choice.m--like", $card);
       var startX = e.pageX || e.originalEvent.touches[0].pageX;
 
       $(document).on("mousemove touchmove", function (e) {
